@@ -7,10 +7,12 @@ function App() {
   const [formData, setFormData] = useState({
     author: "",
     title: "",
-    body: ""
+    body: "",
+    public: null
   })
 
   function handleFormData(e){
+    console.log(formData)
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -27,7 +29,7 @@ function App() {
           placeholder="inserisci il nome dell'autore"
         />
         <input type="text"
-          name='tile'
+          name='title'
           value={formData.title}
           onChange={handleFormData}
           placeholder='Inserisci il titolo del post'
@@ -39,7 +41,10 @@ function App() {
           placeholder='Inserisci il contenuto del post'
         />
 
-        
+        <select name="public" id="public" onChange={handleFormData}>
+          <option value="true">Pubblico</option>
+          <option value="false">Bozza</option>
+        </select>
       </form>
     </>
   )
