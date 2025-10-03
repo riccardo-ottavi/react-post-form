@@ -25,35 +25,35 @@ export default function NewArticleForm() {
             .catch(error => console.log(error))
     }
 
-    return(
+    return (
         <div className="form-container">
-        <form action="" onSubmit={handleSubmit}>
-          <input type="text"
-            name='author'
-            value={formData.author}
-            onChange={handleFormData}
-            placeholder="inserisci il nome dell'autore"
-          />
-          <input type="text"
-            name='title'
-            value={formData.title}
-            onChange={handleFormData}
-            placeholder='Inserisci il titolo del post'
-          />
-          <input type="text"
-            name='body'
-            value={formData.body}
-            onChange={handleFormData}
-            placeholder='Inserisci il contenuto del post'
-          />
-
-          <select name="public" id="public" onChange={handleFormData}>
-            <option value="true">Pubblico</option>
-            <option value="false">Bozza</option>
-          </select>
-          <button type="submit">Invia Form</button>
-        </form>
-      </div>
+            <form action="" onSubmit={handleSubmit}>
+                <label className="form-section-title">Inserisci il nome dell'autore</label>
+                <textarea  className='small-form-field-box' 
+                    name='author'
+                    value={formData.author}
+                    onChange={handleFormData}
+                />
+                <label className="form-section-title">Inserisci il titolo del post</label>
+                <textarea  className='medium-form-field-box' 
+                    name='title'
+                    value={formData.title}
+                    onChange={handleFormData}
+                />
+                <label className="form-section-title">Inserisci il contenuto del post</label>
+                <textarea  className='big-form-field-box' 
+                    name='body'
+                    value={formData.body}
+                    onChange={handleFormData}
+                />
+                <h2 className='form-section-title'>Pubblico o Bozza</h2>
+                <select className='select-input-box' name="public" id="public" onChange={handleFormData}>
+                    <option value="true">Pubblico</option>
+                    <option value="false">Bozza</option>
+                </select>
+                <button className='btn' type="submit">Inserisci</button>
+            </form>
+        </div>
     )
 
 }
