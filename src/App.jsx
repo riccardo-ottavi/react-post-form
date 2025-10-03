@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-
+  const Endpoint = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts"
   const [formData, setFormData] = useState({
     author: "",
     title: "",
@@ -19,9 +19,18 @@ function App() {
     })
   }
 
+  function handleSubmit(e){
+    e.preventDefault();
+    axios.post(Endpoint, formData)
+    .then(res => console.log("dati inviati", res.data))
+    .catch(error => console.log(error))
+  }
+
+
+
   return (
     <>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <input type="text"
           name='author'
           value={formData.author}
@@ -45,6 +54,7 @@ function App() {
           <option value="true">Pubblico</option>
           <option value="false">Bozza</option>
         </select>
+        <button type="submit">Invia Form</button>
       </form>
     </>
   )
